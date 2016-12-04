@@ -1,0 +1,12 @@
+<h1>The Swing Scientists</h1>
+
+
+<% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+
+<%= form_for User.new do |f| %>
+  <%= f.label :email %>:
+  <%= f.email_field :email %><br />
+  <%= f.submit 'Submit' %>
+<% end %>
