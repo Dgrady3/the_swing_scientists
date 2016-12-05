@@ -4,11 +4,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        flash[:notice] = "Thank you! We'll be in touch"
-        format.html { render action: "index"}
+    if user_params[:email].blank?
+      render action: "index"
+    else
+      @user = User.new(user_params)
+      respond_to do |format|
+        if @user.save
+          flash[:notice] = "Thank you! We'll be in touch"
+          format.html { render action: "index"}
+        end
       end
     end
   end

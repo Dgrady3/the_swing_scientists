@@ -1,12 +1,17 @@
-<h1>The Swing Scientists</h1>
+<div class="mybox">
+  <div>
+    <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+    <div class="text"> Hey there! We're currently working on our real website. If you're interested in purchasing one of the baseball swing enhancement grips, please submit your email below!
 
+      <%= form_for User.new do |f| %>
+        <%= f.label :email %>:
+        <%= f.email_field :email, :class =>"email_input_field", id: 'email_input' %><br />
+        <%= f.submit 'Submit', :class =>"btn btn-primary btn-lg active", id: 'submit'%>
+      <% end %>
 
-<% if flash[:notice] %>
-    <p class="flash-notice"><%= flash[:notice] %></p>
-  <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_for User.new do |f| %>
-  <%= f.label :email %>:
-  <%= f.email_field :email %><br />
-  <%= f.submit 'Submit' %>
-<% end %>
